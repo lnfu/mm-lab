@@ -2,6 +2,8 @@
 
 An Isaac Lab 3.0.0 project (Isaac Sim 6.2, Newton physics) with a model of classroom ED305.
 
+![The ED305 room model: color point cloud of the real scan, seen from a corner of the room.](docs/images/ed305.jpg)
+
 ## Install
 
 ```bash
