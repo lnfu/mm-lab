@@ -1,0 +1,22 @@
+{
+  "scan": "../maps/built/ed305_room_ceil.ply",
+  "scan_transform": "preprocess/scan_to_map.txt",
+  "walls": "../Intelligent-Home-Care-Living-Lab/room.usd:/Room/Temp/Assembly523/New_048",
+  "closed": [
+    "/Room/Temp/Assembly523/New1_006",
+    "/Room/Temp/Assembly523/New48",
+    "/Room/Temp/Assembly523/New49"
+  ],
+  "floor_z": 0.004576079334849048,
+  "ceiling_z": 2.785821702933133,
+  "bounds_xy": [
+    [
+      -8.013604990697587e-08,
+      0.0
+    ],
+    [
+      12.101000747692183,
+      7.044000851132497
+    ]
+  ]
+}
