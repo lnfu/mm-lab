@@ -8,7 +8,8 @@ ED305 is a classroom in Engineering Building 4 (ED) of National Yang Ming Chiao 
 from mm_lab.assets import ED305_META, ED305_ROOM_CFG
 ```
 
-- `ED305_ROOM_CFG` is an `AssetBaseCfg` at `/World/Room`. Spawn it one time only.
+- `ED305_ROOM_CFG` is an `AssetBaseCfg` at `/World/Room`.
+  Put it in an `InteractiveSceneCfg`. Newton does not simulate assets that are not in the scene configuration.
 - `ED305_META` contains the floor height, the ceiling height, and the xy limits.
 
 The room uses the frame of the real map: z up, meters, floor at z = 0.
@@ -21,11 +22,14 @@ The room uses the frame of the real map: z up, meters, floor at z = 0.
 | `/Room/PointCloud/Ceiling` | Ceiling points of the scan | No |
 | `/Room/Structure/Floor` | Floor at z = 0.005 | Box |
 | `/Room/Structure/Ceiling` | Ceiling at z = 2.786 (not visible) | Box |
-| `/Room/Structure/Walls` | Walls | Triangle mesh |
+| `/Room/Structure/Walls/Wall_*` | Walls | Box |
 | `/Room/Structure/Door_0` | Closed door | Box |
 | `/Room/Structure/Window_0`, `Window_1` | Windows | Box |
 
 To see into the room from above, set `/Room/PointCloud/Ceiling` to not visible.
+
+All colliders are boxes, because Newton uses the convex hull of a triangle mesh for collision.
+The room works with Newton and with PhysX.
 
 ## Files
 

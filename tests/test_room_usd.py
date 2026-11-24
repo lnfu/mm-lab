@@ -24,13 +24,14 @@ def test_units_and_up_axis(stage):
     assert UsdGeom.GetStageMetersPerUnit(stage) == 1.0
 
 
-def test_only_floor_ceiling_and_walls_collide(stage):
-    colliders = {str(p.GetPath()) for p in stage.Traverse() if p.HasAPI(UsdPhysics.CollisionAPI)}
-    shell = {"/Room/Structure/Floor", "/Room/Structure/Ceiling", "/Room/Structure/Walls"}
-    closures = {c for c in colliders if c.startswith(("/Room/Structure/Door_", "/Room/Structure/Window_"))}
-    assert colliders == shell | closures
-    approx = UsdPhysics.MeshCollisionAPI(stage.GetPrimAtPath("/Room/Structure/Walls")).GetApproximationAttr().Get()
-    assert approx == UsdPhysics.Tokens.none
+def test_only_room_shell_collides(stage):
+    colliders = [p for p in stage.Traverse() if p.HasAPI(UsdPhysics.CollisionAPI)]
+    paths = {str(p.GetPath()) for p in colliders}
+    assert {"/Room/Structure/Floor", "/Room/Structure/Ceiling"} <= paths
+    assert any(p.startswith("/Room/Structure/Walls/Wall_") for p in paths)
+    assert all(p.startswith("/Room/Structure/") for p in paths)
+    # Boxes only: Newton/MuJoCo would collide a triangle mesh as its convex hull.
+    assert all(p.IsA(UsdGeom.Cube) for p in colliders)
 
 
 def test_room_is_static(stage):
