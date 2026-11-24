@@ -1,4 +1,4 @@
-# mm_lab
+# mm-lab
 
 An Isaac Lab 3.0.0 project (Isaac Sim 6.2, Newton physics) with a model of classroom ED305.
 
@@ -15,7 +15,7 @@ export OMNI_KIT_ACCEPT_EULA=yes
 |---|---|
 | `uv run python scripts/view_room.py --livestream 2` | Sends the view to a WebRTC client. |
 | `DISPLAY=:1 uv run python scripts/view_room.py --viz kit` | Opens an Isaac Sim window on display `:1`. |
-| `uv run python scripts/view_room.py --save_images` | Saves two images in `logs/view_room/`. |
+| `uv run python scripts/view_room.py --save-images` | Saves two images in `logs/view_room/`. |
 
 Add `--backend physx` to use PhysX instead of Newton.
 

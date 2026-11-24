@@ -10,7 +10,7 @@ Headless runs load the room, optionally save two camera views, and exit.
 
     uv run python scripts/view_room.py --livestream 2     # watch with the WebRTC Streaming Client
     DISPLAY=:1 uv run python scripts/view_room.py --viz kit
-    uv run python scripts/view_room.py --save_images      # headless, images in logs/view_room/
+    uv run python scripts/view_room.py --save-images      # headless, images in logs/view_room/
     uv run python scripts/view_room.py --backend physx    # PhysX instead of Newton
 """
 
@@ -24,8 +24,8 @@ from isaaclab.app import add_launcher_args, launch_simulation
 parser = argparse.ArgumentParser(description="Load the ED305 room and look at it.")
 # Not "--physics": Isaac Lab's launcher reads args.physics itself (e.g. physics=newton_mjwarp).
 parser.add_argument("--backend", choices=("newton", "physx"), default="newton", help="Physics backend.")
-parser.add_argument("--save_images", action="store_true", help="Save two camera views.")
-parser.add_argument("--output_dir", default="logs/view_room", help="Where to write images.")
+parser.add_argument("--save-images", action="store_true", help="Save two camera views.")
+parser.add_argument("--output-dir", default="logs/view_room", help="Where to write images.")
 add_launcher_args(parser)
 args_cli = parser.parse_args()
 args_cli.enable_cameras = args_cli.save_images

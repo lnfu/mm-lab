@@ -8,9 +8,9 @@ requires = ["uv_build>=0.12.6,<0.13"]
 build-backend = "uv_build"
 
 [project]
-name = "mm_lab"
+name = "mm-lab"
 version = "0.1.0"
-description = "Isaac Lab environments for mm_lab."
+description = "Isaac Lab project with a model of classroom ED305 (NYCU Engineering Building 4)."
 readme = "README.md"
 license = { file = "LICENSE" }
 authors = [
